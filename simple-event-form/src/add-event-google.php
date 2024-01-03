@@ -2,7 +2,9 @@
 // Ensure that the request is sent via POST method
 require_once ('GoogleCalendarClient.php');
 
-$calendar_id = "tdev63002@gmail.com";
+// set these variables as part of setup
+$calendar_id = ""; // get from your specific google calendar > settings
+$user = ""; // get from Google Developer Console, Service Account email 
 
 $calendar = new GoogleCalendarClient($calendar_id, 'America/New_York');
 $colors = $calendar->getColors();
@@ -31,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$calendar->setStartDate($start);
 		$calendar->setEndDate($end);
 		$calendar->setColor(strip_tags($color));
+		$calendar->setUser(strip_tags($user));
 
 		$status = $calendar->addEventToGoogle();
 

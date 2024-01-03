@@ -15,6 +15,7 @@ class GoogleCalendarClient {
 	private $start_date;
 	private $end_date;
 	private $color;
+	private $user;
 
 	private $colorArray = array(
 		1 => 'blue',
@@ -36,6 +37,7 @@ class GoogleCalendarClient {
 		$this->calendar_account = $calendar_account;
 		$this->time_zone = $time_zone;
 	}
+	
 	private function authorizeServiceAccount()
 	{
 		try {
@@ -53,7 +55,7 @@ class GoogleCalendarClient {
 			$client->setScopes([Calendar::CALENDAR, Calendar::CALENDAR_EVENTS]);
 
 			$client->setAccessType('offline');
-			$client->setSubject('mypersonalsa@test-calendar-405315.iam.gserviceaccount.com');
+			$client->setSubject($this->user);
 			$client->authorize();
 
 			return $client;
@@ -66,8 +68,6 @@ class GoogleCalendarClient {
 		}
 	}
 
-
-
 	private function getCalendar()
 	{
 		$client = $this->authorizeServiceAccount();
@@ -77,6 +77,9 @@ class GoogleCalendarClient {
 		return false;
 	}
 
+	public function setUser($user){
+		$this->user = $user;
+	}
 
 	public function setTitle($title)
 	{
