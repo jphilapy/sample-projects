@@ -1,0 +1,19 @@
+{
+    "name": "jeffphilapy/simple-event-form",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Jeffphilapy\\SimpleEventForm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jeff Philapy",
+            "email": "jeff@altahost.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.15.0",
+        "nesbot/carbon": "^2.72"
+    }
+}
